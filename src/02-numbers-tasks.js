@@ -202,9 +202,9 @@ function roundToPowerOfTen(num, pow) {
  */
 function isPrime(n) {
   let k = 0;
-  for (let i = 1; i <= n; ++i) {
+  for (let i = 1; i <= n; i += 1) {
     if (n % i === 0) {
-      ++k;
+      k += 1;
     }
   }
   return k < 3;

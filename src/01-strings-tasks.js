@@ -214,9 +214,9 @@ function getRectangleString(width, height) {
   const lineBreak = '\n';
   let rect = '';
 
-  for (let i = 0; i < height; ++i) {
+  for (let i = 0; i < height; i += 1) {
     let line = '';
-    for (let j = 0; j < width; ++j) {
+    for (let j = 0; j < width; j += 1) {
       if (i === 0 && j === 0) {
         line += topLeft;
       } else if (i === 0 && j === width - 1) {
@@ -228,11 +228,7 @@ function getRectangleString(width, height) {
       } else if (i === 0 || i === height - 1) {
         line += hor;
       } else {
-        if (j === 0 || j === width - 1) {
-          line += vert;
-        } else {
-          line += blank;
-        }
+        line = (j === 0 || j === width - 1) ? line += vert : line += blank;
       }
     }
     line += lineBreak;
