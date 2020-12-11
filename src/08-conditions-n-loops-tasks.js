@@ -275,8 +275,11 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const digits = ccn.toString().split('').reverse().map((x) => +x);
+  const getRoot = (x) => (x < 10 ? x : getRoot(Math.trunc(x / 10)) + (x % 10));
+  const doubled = digits.map((x, i) => (i % 2 ? getRoot(2 * x) : getRoot(x)));
+  return doubled.reduce((acc, x) => acc + x, 0) % 10 === 0;
 }
 
 /**
@@ -492,7 +495,7 @@ function evaluateTicTacToePosition(position) {
     }
     return diag;
   };
-  const equals = (v1, v2) => v1.every((x, i) => x === v2[i]);
+  const equals = (v1, v2) => v1.every((x, i) => v1.length === v2.length && x === v2[i]);
   const x = ['X', 'X', 'X'];
   const o = ['0', '0', '0'];
   for (let i = 0; i < position.length; i += 1) {
