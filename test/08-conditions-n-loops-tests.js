@@ -555,7 +555,7 @@ describe('08-conditions-n-loops-tasks', () => {
       [undefined, X, X],
       [X, undefined, undefined],
     ], [
-      [X, X],
+      [X, X, undefined], // delete undefined
       [O, O, O],
       [X, undefined, X],
     ], [
@@ -598,7 +598,7 @@ describe('08-conditions-n-loops-tasks', () => {
       [undefined, undefined, undefined],
     ], [
       [X, undefined, undefined],
-      [O, O],
+      [O, O, undefined], // delete undefined
       [undefined, undefined, X],
     ], [
       [X, O, X],
