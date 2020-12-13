@@ -134,8 +134,26 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  const intersects = (range1, range2) => (range1.begin <= range2.begin
+    ? range1.end >= range2.begin : range2.end >= range1.begin);
+  const range1 = {
+    begin: rect1.left,
+    end: rect1.left + rect1.width,
+  };
+  const range2 = {
+    begin: rect1.top,
+    end: rect1.top + rect1.height,
+  };
+  const range3 = {
+    begin: rect2.left,
+    end: rect2.left + rect2.width,
+  };
+  const range4 = {
+    begin: rect2.top,
+    end: rect2.top + rect2.height,
+  };
+  return intersects(range1, range3) && intersects(range2, range4);
 }
 
 
@@ -376,6 +394,12 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(/* pathes */) {
+  // const splittedPaths = pathes.reduce((acc, path) => {
+  //   acc.push(path.split('/').map((x) => `/${x}`));
+  //   return acc;
+  // }, []);
+  // let res = '';
+  // return res;
   throw new Error('Not implemented');
 }
 
